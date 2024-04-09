@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+	<title>Registration Page</title>
+	<link rel="stylesheet" type="text/css" href="signup.css">
+</head>
+<body>
+	<div class="registration-form">
+		<h1>Register</h1>
+		<form method="post" th:action="@{/Signup}" th:object="${signup}">
+			<label>Email</label>
+			<input type="email" name="email" id="email" required th:field=*{email}>
+
+			<label>Password</label>
+			<input type="password" name="password" id="password" required th:field=*{password}>
+
+			<label>Confirm Password</label>
+			<input type="password" name="confirm-password" id="confirm-password" required th:field=*{confirmpassword}>
+			<span style="color:red" id="password-error"></span>
+			<br>
+			<br>
+			<button type="submit">Register</button>
+		</form>
+	</div>
+	<script >
+		const passwordInput = document.getElementById('password');
+		const confirmPasswordInput = document.getElementById('confirm-password');
+		const passwordError = document.getElementById('password-error');
+	
+		confirmPasswordInput.addEventListener('input', () => {
+			if (passwordInput.value !== confirmPasswordInput.value) {
+				passwordError.textContent = 'Passwords do not match.';
+			} else {
+				passwordError.textContent = '';
+			}
+		});
+	</script>
+</body>
+</html>

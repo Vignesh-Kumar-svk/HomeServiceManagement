@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Us - Homeshifting & Renovation Services</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .header {
+        
+        height:100px;
+        color:black;
+        font-size:20px;
+        padding: 30px;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 36px;
+        text-align: center;
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+      
+       .footer {
+	    position:fixed;
+	    left:0;
+	    bottom:0;
+	    width:100%;
+	    background-color: #333;
+	    padding: 20px;
+	    color: white;
+	    text-align: center;
+	   }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" >Home Services Management System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" th:href="@{/home}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact us</a>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" th:href="@{/customerregistration}">Customer signin</a>
+                <a class="dropdown-item" th:href="@{/Employee-registration}">Worker signin</a>
+                <a class="dropdown-item" href="#">Supplier signin</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="@{/Signup}">New to this site? signup </a>
+              </div>
+            </li>
+            
+          </ul>
+          
+        </div>
+      </nav>
+    <div class="header">
+      <h1>About Us</h1>
+    </div>
+    <div class="container">
+      <p>
+        We are a comprehensive platform that offers homeshifting and renovation services to customers. Our services include professional packers and porters who handle the shifting process, as well as cleaning, plumbing, and other engineering works.
+      </p>
+      <p>
+        Our platform also offers container rental services to bachelors and employers who are looking for affordable housing solutions. The containers provided can be rented for extended periods, offering a low-cost alternative to traditional housing options.
+      </p>
+      <p>
+        At Homeshifting & Renovation Services, we believe that every customer is unique, and we strive to offer customized solutions to meet their individual needs. Our containers can be customized with interior designs to meet the unique requirements of each customer.
+      </p>
+      <p>
+        We take great pride in our work and strive to provide exceptional service and support to our customers. Our team is made up of experts in their respective fields, and we work collaboratively to achieve our common goals.
+      </p>
+    </div>
+    
+    <div class="footer">
+    <p>Copyright © 2023 
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms & Conditions</a>
+    </p>
+</div>
+  </body>
+</html>

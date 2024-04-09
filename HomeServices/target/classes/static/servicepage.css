@@ -1,0 +1,79 @@
+@charset "ISO-8859-1";
+
+/* General styling */
+body {
+    font-family: Times New Roman;
+    background-image: url(img/Background-Registration-Form.png);
+  }
+  h1{
+    text-align:center;
+  }
+
+  select option{
+    line-height:20px;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 200px;
+    background-color: #d58c8c;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(228, 36, 36, 0.2);
+  }
+  
+  form {
+  	
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #f1f1f1;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius:30px;
+    border-color:gray;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  select{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 1px;
+    resize: vertical;
+  
+  }
+  
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url(img/free-arrow-down-icon-3101-thumb.png);
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 25px;
+  }
+  
+  input[type="submit"] {
+    padding: 10px;
+    background-color:black;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Responsive design */
+  @media only screen and (max-width: 768px) {
+    .container {
+      max-width: 100%;
+    }
+  }
+  

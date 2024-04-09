@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="landingpage.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+  
+  <!-- Design by foolishdeveloper.com -->
+  
+  
+    <title>Image Slider</title>
+    <!--Stylesheet-->
+    <style media="screen">
+    	*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    background-color: #ffffff;
+    max-width: 50%;
+    height: 45%;
+
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 70%;
+    top: 60%;
+   
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    overflow:hidden;
+}
+.image-container{
+    position:relative;
+    overflow:hidden;
+    max-width:100%;
+    max-height:100%;
+}
+img{
+    position: relative;
+    width: 200%;
+	height: 200px;
+    display: none;
+    overflow:hidden;
+   
+}
+.active{
+    display: block;
+}
+.dot-container{
+    width: 20px;
+    margin: 20px auto 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+button{
+    outline: none;
+    cursor: pointer;
+}
+.dot-container button{
+    height: 20px;
+    max-width: 150%;
+    border-radius: 10%;
+    margin-top:10px;
+    margin-left:15px;
+    border: 3px solid #076bb8;
+    background-color: transparent;
+}
+.dot-container button:nth-child(1){
+    background-color: #076bb8;
+}
+#prev,#next{
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    background-color: #076bb8;
+    color: #ffffff;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    border: none;
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: bolder;
+}
+#prev{
+    left: 5px;
+}
+#next{
+    right: 5px;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark py-4 ">
+        <a class="navbar-brand w3-xxlarge">Home Services Management System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" th:href="@{/home}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/aboutus}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/home}">Contact us</a>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                DropDown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" th:href="@{/customerregistration}">Customer signin</a>
+                <a class="dropdown-item" th:href="@{/Employee-registration}">Worker signin</a>
+                <a class="dropdown-item" href="#">Supplier signin</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" th:href="@{/login}">My Orders </a>
+              </div>
+            </li>
+            
+          </ul>
+    
+      </nav>
+
+
+
+    <div class="container">
+        <div class="image-container">
+            <img src="/img/img1.jpeg"id="content1" class="active">
+            <img src="/img/img2.jpeg" id="content2">
+            <img src="/img/interior.jpeg" id="content3">
+            <img src="/img/porter.jpg" id="content4">
+        </div>
+        <div class="dot-container">
+            <button onclick = "dot(1)"></button>
+            <button onclick = "dot(2)"></button>
+            <button onclick = "dot(3)"></button>
+            <button onclick = "dot(4)"></button>
+        </div>
+        <button id="prev" onclick="prev()"> &lt; </button>
+        <button id="next" onclick="next()"> &gt; </button>
+    </div>
+
+   
+
+
+    <script type="text/javascript">
+let i = 0; // current slide
+let j = 4; // total slides
+
+const dots = document.querySelectorAll(".dot-container button");
+const images = document.querySelectorAll(".image-container img");
+
+function next(){
+    document.getElementById("content" + (i+1)).classList.remove("active");
+    i = ( j + i + 1) % j;
+    document.getElementById("content" + (i+1)).classList.add("active");
+    indicator( i+ 1 );
+}
+
+function prev(){
+    document.getElementById("content" + (i+1)).classList.remove("active");
+    i = (j + i - 1) % j;
+    document.getElementById("content" + (i+1)).classList.add("active");
+    indicator(i+1);
+}
+
+function indicator(num){
+    dots.forEach(function(dot){
+        dot.style.backgroundColor = "transparent";
+    });
+    document.querySelector(".dot-container button:nth-child(" + num + ")").style.backgroundColor = "#076bb8";
+}
+
+function dot(index){
+    images.forEach(function(image){
+        image.classList.remove("active");
+    });
+    document.getElementById("content" + index).classList.add("active");
+    i = index - 1;
+    indicator(index);
+}
+    </script>
+
+
+
+<div class="footer">
+    <p>Copyright © 2023 
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms & Conditions</a>
+    </p>
+</div>
+</body>
+</html>

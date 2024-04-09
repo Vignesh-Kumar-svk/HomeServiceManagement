@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+	<title>Registration Page</title>
+    <link rel="stylesheet" href="servicepage.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>Registration Page</h1>
+	
+	<form method="post" th:action="@{/Employee-registration}" th:object="${servicereg}">
+	
+	
+		<label for="fullname">Full Name:</label>
+		<input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required th:field=*{fullname}><br><br>
+		
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" th:field=*{email}  required><br><br>
+		
+		<label for="specializtion">Specialization</label>
+		<select id="specialization" name="specialization" required th:field=*{specialization}>
+			<option value="">Select profession</option>
+			<option value="Painter">Painter</option>
+			<option value="Interior Designer">Interior Designer</option>
+			<option value="Plumber">Plumber</option>
+			<option value="Mechanic">Mechanic</option>
+			<option value="Electrician">Electrician</option>
+			<!-- Add more options here -->
+		</select>
+        <br>
+        <br>
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" th:field=*{gender}>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="rather not say">Rather not say</option>
+            </select>
+        
+		<br>
+        <br>
+        
+        <label for="phone">Phone Number</label>
+      	<input type="text" id="phone" name="phonenumber" placeholder="Your phone number.." th:field=*{phonenumber}>
+		<br>
+        <br>
+        
+         <label for="age">Age</label>
+      	<input type="number" id="age" name="age" th:field=*{age}>
+		<br>
+        <br>
+        
+        
+		<label for="state">State:</label>
+		<select id="state" name="state" required th:field=*{state}>
+			<option value="">Select State</option>
+			<option value="Tamilnadu">TamilNadu</option>
+			<option value="Kerala">Kerala</option>
+			<option value="Andhra">Andhra</option>
+			<option value="Karnataka">Karnataka</option>
+			<option value="Telungana">Telungana</option>
+			<!-- Add more options here -->
+		</select>
+        <br>
+        <br>
+
+		
+		<label for="city">City:</label>
+		<select id="city" name="city" required disabled>
+			<option value="">Select City</option>
+		</select>
+        <br>
+        <br>
+		
+		<label for="area">Area:</label>
+		<select id="area" name="area" required disabled>
+			<option value="">Select Area</option>
+		</select>
+        <br>
+        <br>
+		
+		<input type="submit" value="Register">
+	</form>
+	
+	<script>
+		$(document).ready(function() {
+			// Define the cities and areas for each state
+			var citiesByState = {
+				"Tamilnadu": ["Select City","Chennai", "Madurai", "Trichy", "Coimbatore", "Salem", "Thoothukudi"],
+				"Kerala": ["Select City","Thiruvananthapuram", "Kozhikode", "Thirssur"],
+				"Andhra": ["Select City","Chitoor", "Tirupati", "Nellore"],
+				"Telungana": ["Select City","Hyderabad"]
+				// Add more states, cities, and areas here
+			};
+			
+			var areasByCity = {
+				"Chennai": ["Select Area","Ambattur", "Avadi", "Vadapalani", "KK nagar", "Perambur"],
+				"Madurai": ["Select Area","Melur", "Alagar koyil", "Thirumangalam"],
+				"Trichy": ["Select Area","Srirangam", "Thillai nagar", "Kallakudi"],
+				"Coimbatore": ["Select Area","Townhall", "Selvapuram", "Ukkadam"],
+				"Salem": ["Select Area","Yercaud", "Gangavalli"],
+				"Thoothukudi": ["Select Area","Karungulam", "Pudur", "Ottapidaram"],
+				"Thiruvananthapuram": ["Select Area","Varkala", "Anaiyara", "Attipara"],
+				"Kozhikode": ["Select Area","Chatamangalam", "Palangad", "Paruthippara"],
+				"Thirussur": ["Select Area","Alapad", "Alathur", "Kottapadi"],
+                "Chitoor": ["Select Area","Nagari", "Kuppam", "Palananer"],
+                "Tirupati": ["Select Area","Chandragiri", "Renigunta", "Bhavani nagar"],
+                "Nellore": ["Select Area","Narkuru", "Navalakh Gardens", "BV Nagar"],
+                "Hyderabad": ["Select Area","Secunderabad", "Jubilee Hills", "Charminar"]
+            };
+            
+            // When a state is selected, populate the cities dropdown and enable it
+            $('#state').change(function() {
+                var selectedState = $(this).val();
+                var cities = citiesByState[selectedState];
+                var cityDropdown = $('#city');
+                cityDropdown.empty();
+                $.each(cities, function(index, value) {
+                    cityDropdown.append($('<option>').text(value).attr('value', value));
+                });
+                cityDropdown.prop('disabled', false);
+                $('#area').prop('disabled', true).empty();
+            });
+            
+            // When a city is selected, populate the areas dropdown and enable it
+            $('#city').change(function() {
+                var selectedCity = $(this).val();
+                var areas = areasByCity[selectedCity];
+                var areaDropdown = $('#area');
+                areaDropdown.empty();
+                $.each(areas, function(index, value) {
+                    areaDropdown.append($('<option>').text(value).attr('value', value));
+                });
+                areaDropdown.prop('disabled', false);
+            });
+        });
+</script>

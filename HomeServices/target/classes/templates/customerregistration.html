@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="customerregistration.css">
+  </head>
+  <body>
+    <h1>Registration Page</h1>
+    <form method="post" th:action=@{/customerregistration} th:object=${customerreg}>
+      <label for="fname">Full Name</label>
+      <input type="text" id="fname" name="fullname" placeholder="Your full name.." th:field=*{fullname} required>
+
+      <label for="gender" >Gender</label>
+      <select id="gender" name="gender" th:field=*{gender} >
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="rather not say">Rather not say</option>
+      </select>
+
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" name="phonenumber" placeholder="Your phone number.." th:field=*{phonenumber}>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Your contact mail.." th:field=*{email}>
+      <p  class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+      
+
+      <label  for="containersize">Container required</label>
+      <select id="containersize" name="containersize" th:field=*{containerreq}>
+        <option value="">Select your required size....</option>
+        <option value="10ft">10ft</option>
+        <option value="20ft">20ft</option>
+        <option value="40ft">40ft</option>
+        <option value="45ft">45ft</option>
+        <option value="48ft">48ft</option>
+        <option value="53ft">53ft</option>
+      </select>
+
+            <label id="caddresslabel" for="caddress">Current Address</label>
+            <textarea id="caddress" name="caddress" placeholder="Your address.." style="height:100px" th:field=*{currentaddress}></textarea>
+
+            <label id="daddresslabel" for="daddress">Delivery Address</label>
+            <textarea id="daddress" name="daddress" placeholder="Your address.." style="height:100px" th:field=*{deliveryaddress}></textarea>
+      
+            <label id="dayslabel" for="days">Days required</label>
+            <input type="number" id="days" name="days" placeholder="No.of days required..."  th:field=*{days}>
+
+      
+
+      <label id="service-required-label" for="servicerequired">Service required</label>
+      <select id="servicerequired" name="servicerequired" th:field=*{servicerequired}>
+        <option value="">Select a type of Service you required</option>
+        <option value="plumbing">Plumbing</option>
+        <option value="interiors">Interior  Works</option>
+        <option value="painting">Painting</option>
+        <option value="electricals">Electricals</option>
+        <option value="carpentary">Carpentary</option>
+      </select>
+
+      <label id="addresslabel" for="address">Address</label>
+      <textarea id="address" name="address" placeholder="Your address.." style="height:100px" th:field=*{currentaddress}></textarea>
+
+      <input type="submit" value="Submit">
+    </form>
+    <script>
+      const containerSizeSelect = document.getElementById("containersize");
+      const containerFields = document.querySelectorAll("#caddress, #daddress, #days, #caddresslabel, #daddresslabel, #dayslabel");
+      const serviceRequiredSelect = document.getElementById("servicerequired");
+      const addressField = document.getElementById("address");
+      const addressLabel = document.getElementById("addresslabel");
+      
+      // hide container fields by default
+      containerFields.forEach((field) => {
+        field.style.display = "none";
+      });
+      
+      // hide service address field by default
+      addressField.style.display = "none";
+      addressLabel.style.display= "none";
+      
+      // add event listener to container size select
+      containerSizeSelect.addEventListener("change", () => {
+        // if container size is selected, show container fields
+        if (containerSizeSelect.value !== "") {
+          containerFields.forEach((field) => {
+            field.style.display = "block";
+          });
+        } else {
+          // otherwise, hide container fields
+          containerFields.forEach((field) => {
+            field.style.display = "none";
+          });
+        }
+      });
+      
+      // add event listener to service required select
+      serviceRequiredSelect.addEventListener("change", () => {
+        // if service is selected, show service address field
+        if (serviceRequiredSelect.value !== "") {
+          addressField.style.display = "block";
+          addressLabel.style.display= "block";
+        } else {
+          // otherwise, hide service address field
+          addressField.style.display = "none";
+          addressLabel.style.display= "none";
+        }
+      });
+    </script>
+    </body>
+    </html>
